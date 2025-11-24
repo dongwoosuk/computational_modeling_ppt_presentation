@@ -6,14 +6,23 @@ const slideHeight = 720.0;
 function calculateScale() {
     const container = document.getElementById('presentation-container');
     const isFullscreen = document.fullscreenElement !== null;
+    const isMobile = window.innerWidth <= 900;
+
     let availableWidth, availableHeight;
+
     if (isFullscreen) {
         availableWidth = window.innerWidth;
-        availableHeight = window.innerHeight - 80;
+        availableHeight = window.innerHeight;
+    } else if (isMobile) {
+        // Mobile: fit to height with small margins
+        availableWidth = window.innerWidth;
+        availableHeight = window.innerHeight - 60; // Space for controls
     } else {
+        // Desktop: keep existing behavior with margins
         availableWidth = window.innerWidth - 40;
         availableHeight = window.innerHeight - 150;
     }
+
     const scale = Math.min(availableWidth / slideWidth, availableHeight / slideHeight, 1.0);
     container.style.transform = `scale(${scale})`;
 }
