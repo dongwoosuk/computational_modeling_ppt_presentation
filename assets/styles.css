@@ -39,7 +39,7 @@ body {
     background: #fff;
     box-shadow: 0 10px 40px rgba(0,0,0,0.3);
     transform-origin: center center;
-    overflow: visible;
+    overflow: hidden;
 }
 
 .slide {
@@ -52,7 +52,6 @@ body {
     opacity: 0;
     background: #fff;
     transition: opacity 0.3s ease;
-    overflow: visible;
 }
 
 .slide.active {
